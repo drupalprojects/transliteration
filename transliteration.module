@@ -14,6 +14,16 @@
  */
 
 /**
+ * Implementaion of hook_help().
+ */
+function transliteration_help($section) {
+  switch ($section) {
+    case 'admin/modules#description':
+      return t('Provides transliteration for UTF-8 text input and sanitzes file names.');
+  }
+}
+
+/**
  * Transliterate UTF-8 input to plain ASCII.
  *
  * @param string $input
@@ -34,10 +44,10 @@ function transliteration_get($input, $unknown = '?') {
  * Transliterate and clean the names of new uploaded files.
  */
 function transliteration_menu($may_cache) {
-  if (!$may_cache && !empty($_FILES['files'])) {
+  if (!$may_cache && !empty($_FILES['edit'])) {
     require_once(drupal_get_path('module', 'transliteration') .'/transliteration.inc');
-    foreach ($_FILES['files']['name'] as $field => $filename) {
-      $_FILES['files']['name'][$field] = transliteration_clean_filename($filename);
+    foreach ($_FILES['edit']['name'] as $field => $filename) {
+      $_FILES['edit']['name'][$field] = transliteration_clean_filename($filename);
     }
   }
 }
