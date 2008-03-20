@@ -3,3 +3,8 @@
 Transliteration 6.x-1.x, xxxx-xx-xx
 -----------------------------------
 
+
+Transliteration 6.x-1.0, 2007-03-20
+-----------------------------------
+Initial release.
+
