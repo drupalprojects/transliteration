@@ -3,10 +3,6 @@
 
 /**
  * @file
- * Transliteration
- * by Stefan Kudwien and Daniel Kudwien
- * developed by UNLEASHED MIND - www.unleashedmind.com
- *
  * Provides transliteration for UTF-8 text input and sanitzes file names.
  *
  * Uses data from the Text::Unidecode Perl library.
