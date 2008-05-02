@@ -2,6 +2,7 @@
 
 Transliteration 5.x-1.x, xxxx-xx-xx
 -----------------------------------
+#253916 by Freso: Fixed typo in .info file.
 
 
 Transliteration 5.x-1.0, 2007-12-09
