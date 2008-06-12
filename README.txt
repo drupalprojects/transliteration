@@ -7,9 +7,9 @@ other Drupal modules, as well as sanitizing the file names when uploading new
 files.
 
 For a full description visit the project page:
-  http://drupal.org/project/transliterate
+  http://drupal.org/project/transliteration
 Bug reports, feature suggestions and latest developments:
-  http://drupal.org/project/transliterate/issues
+  http://drupal.org/project/issues/transliteration
 
 
 -- REQUIREMENTS --
@@ -22,17 +22,20 @@ None.
 1. Copy the transliteration module to your modules directory and enable it on
    the Modules page (admin/build/modules).
 
-2. That's it. The names of all uploaded files will now automatically be
+   During installation or update all filenames containing invalid characters
+   will be automatically converted.
+
+2. That's it. The names of all new uploaded files will now automatically be
    transliterated and cleaned from invalid characters.
 
 
 -- INTEGRATION --
 
-Module developers that want to make use of transliteration may use the following
-code:
+Module developers that want to make use of transliteration to clean input
+strings should code similar to the following:
 
 if (module_exists('transliteration')) {
-  $transliterated = transliteration_get($input);
+  $transliterated = transliteration_get($string);
 }
 
 Take a look at transliteration.module for an explanation of additional function
