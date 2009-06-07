@@ -2,6 +2,9 @@
 
 Transliteration 5.x-2.x, xxxx-xx-xx
 -----------------------------------
+Rewrote retroactive transliteration during installation or update to get rid of
+  SUBSTRING_INDEX function dependency.
+#312021 by pcorbett: Added SQL Server support.
 #257041 by Freso: More transliterations (x21??).
 
 
