@@ -2,6 +2,7 @@
 
 Transliteration 5.x-2.x, xxxx-xx-xx
 -----------------------------------
+#364931 by PaV: Added Esperanto transliteration.
 Rewrote retroactive transliteration during installation or update to get rid of
   SUBSTRING_INDEX function dependency.
 #312021 by pcorbett: Added SQL Server support.
