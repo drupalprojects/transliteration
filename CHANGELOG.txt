@@ -1,5 +1,10 @@
 // $Id$
 
+Transliteration 6.x-2.x, xxxx-xx-xx
+-----------------------------------
+#257041 by Freso: More transliterations (x21??).
+
+
 Transliteration 6.x-2.0, 2008-06-12
 -----------------------------------
 #255646 by smk-ka: Added a language parameter to transliteration_get().
