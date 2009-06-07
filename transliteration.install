@@ -50,7 +50,7 @@ function transliteration_install_compat() {
  * Helper function; retroactive transliteration of existing filenames.
  */
 function transliteration_install_retroactive() {
-  require_once(drupal_get_path('module', 'transliteration') .'/transliteration.inc');
+  require_once (drupal_get_path('module', 'transliteration') . '/transliteration.inc');
 
   // Regexp operators differ between database manufacturers.
   switch ($GLOBALS['db_type']) {
@@ -58,6 +58,7 @@ function transliteration_install_retroactive() {
     case 'mysqli':
       $op = 'RLIKE';
       break;
+
     case 'pgsql':
       $op = '~*';
       break;
@@ -72,7 +73,7 @@ function transliteration_install_retroactive() {
   while ($file = db_fetch_object($result)) {
     // Transliterate the file's name.
     $filepath = $file->filepath;
-    $filepath_new = dirname($filepath) .'/'. transliteration_clean_filename(basename($filepath));
+    $filepath_new = dirname($filepath) . '/' . transliteration_clean_filename(basename($filepath));
 
     // Move the file to a new location but do a shortcut check first to avoid
     // unneccessary error messages. It's probably better to not mess with
