@@ -2,6 +2,11 @@
 
 Transliteration 5.x-2.x, xxxx-xx-xx
 -----------------------------------
+#487550 by viadimezzo: Added sz ligature transliteration to German.
+
+
+Transliteration 5.x-2.1, 2009-06-09
+-----------------------------------
 #199660 by smk-ka: Added a constant to disallow converting pre-existing
   filenames by default.
 #357254 by overall, Cynicus: Fixed transliteration of Russian letters.
