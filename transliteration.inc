@@ -4,9 +4,9 @@
 /**
  * Sanitize a file name.
  *
- * Transliterates the file name and removes all problematic characters.
+ * Transliterates the file name and removes invalid characters.
  *
- * @param string $filename
+ * @param $filename
  *   A file name.
  *
  * @return string
@@ -28,21 +28,24 @@ function transliteration_clean_filename($filename) {
 }
 
 /**
- * Transliterate UTF-8 input to plain ASCII.
+ * Transliterate UTF-8 text to ASCII.
  *
  * Based on Mediawiki's UtfNormal::quickIsNFCVerify().
  *
- * @param string $string
+ * @param $string
  *   UTF-8 text input.
- * @param string $unknown
- *   Replacement for unknown characters and illegal UTF-8 sequences.
- * @param string $locale
- *   Optional ISO 639 language code used to import language specific
- *   replacements. Defaults to the current locale.
- *
- * @return string
- *   Plain ASCII output.
- * @see transliteration_get()
+ * @param $unknown
+ *   Replacement string for characters that do not have a suitable ASCII
+ *   equivalent.
+ * @param $locale
+ *   Optional ISO 639 language code that denotes the language of the input.
+ *   Used to apply language-specific variations and defaults to the current
+ *   display language. If transliteration takes place during output (instead
+ *   of creation) and the source language is not known at that time, it is
+ *   recommended to set this argument to 'en' to produce consistent results
+ *   for all enabled languages.
+ * @return
+ *   Transliterated text.
  */
 function transliteration_process($string, $unknown = '?', $locale = NULL) {
   // Screen out some characters that eg won't be allowed in XML.
@@ -186,19 +189,19 @@ function transliteration_process($string, $unknown = '?', $locale = NULL) {
 }
 
 /**
- * Lookup and replace a character from the transliteration database.
+ * Load the transliteration database and replace a Unicode character.
  *
- * @param integer $ord
- *   A unicode ordinal character code.
- * @param string $unknown
- *   Replacement for unknown characters.
- * @param string $locale
- *   Optional ISO 639 language code used to import language specific
- *   replacements. Defaults to the current locale.
- *
- * @return string
- *   Plain ASCII replacement character.
- * @see transliteration_get()
+ * @param $ord
+ *   A ordinal Unicode character code.
+ * @param $unknown
+ *   Replacement string for characters that do not have a suitable ASCII
+ *   equivalent.
+ * @param $locale
+ *   Optional ISO 639 language code that denotes the language of the input.
+ *   Used to apply language-specific optimizations.  Defaults to the current
+ *   display language.
+ * @return
+ *   ASCII replacement character.
  */
 function _transliteration_replace($ord, $unknown = '?', $locale = NULL) {
   if (!isset($locale)) {
