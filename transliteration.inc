@@ -4,22 +4,25 @@
 /**
  * Sanitize a file name.
  *
- * Transliterates the file name and removes all problematic characters.
+ * Transliterates the file name and removes invalid characters.
  *
- * @param string $filename
+ * @param $filename
  *   A file name.
- * @param string $langcode
- *   Optional ISO 639 language code used to import language specific
- *   replacements. Defaults to the current display language.
- *
- * @return string
+ * @param $source_langcode
+ *   Optional ISO 639 language code that denotes the language of the input.
+ *   Used to apply language-specific variations and defaults to the current
+ *   display language. If transliteration takes place during output (instead
+ *   of creation) and the source language is not known at that time, it is
+ *   recommended to set this argument to 'en' to produce consistent results
+ *   for all enabled languages.
+ * @return
  *   Cleaned file name.
  */
-function transliteration_clean_filename($filename, $langcode = NULL) {
+function transliteration_clean_filename($filename, $source_langcode = NULL) {
   // Trim any leading/trailing dots.
   $filename = trim($filename, '.');
   // Transliterate to ASCII.
-  $filename = transliteration_process($filename, '', $langcode);
+  $filename = transliteration_process($filename, '', $source_langcode);
   // Replace whitespace.
   $filename = str_replace(' ', '_', $filename);
   // Remove any remaining non-safe characters.
@@ -31,23 +34,26 @@ function transliteration_clean_filename($filename, $langcode = NULL) {
 }
 
 /**
- * Transliterate UTF-8 input to plain ASCII.
+ * Transliterate UTF-8 text to ASCII.
  *
  * Based on Mediawiki's UtfNormal::quickIsNFCVerify().
  *
- * @param string $string
+ * @param $string
  *   UTF-8 text input.
- * @param string $unknown
- *   Replacement for unknown characters and illegal UTF-8 sequences.
- * @param string $langcode
- *   Optional ISO 639 language code used to import language specific
- *   replacements. Defaults to the current display language.
- *
- * @return string
- *   Plain ASCII output.
- * @see transliteration_get()
+ * @param $unknown
+ *   Replacement string for characters that do not have a suitable ASCII
+ *   equivalent.
+ * @param $source_langcode
+ *   Optional ISO 639 language code that denotes the language of the input.
+ *   Used to apply language-specific variations and defaults to the current
+ *   display language. If transliteration takes place during output (instead
+ *   of creation) and the source language is not known at that time, it is
+ *   recommended to set this argument to 'en' to produce consistent results
+ *   for all enabled languages.
+ * @return
+ *   Transliterated text.
  */
-function transliteration_process($string, $unknown = '?', $langcode = NULL) {
+function transliteration_process($string, $unknown = '?', $source_langcode = NULL) {
   // Screen out some characters that eg won't be allowed in XML.
   $string = preg_replace('/[\x00-\x08\x0b\x0c\x0e-\x1f]/', $unknown, $string);
 
@@ -164,7 +170,7 @@ function transliteration_process($string, $unknown = '?', $langcode = NULL) {
         else if ($n <= 0xfd) {
           $ord = ($n - 252) * 1073741824 + (ord($sequence{1}) - 128) * 16777216 + (ord($sequence{2}) - 128) * 262144 + (ord($sequence{3}) - 128) * 4096 + (ord($sequence{4}) - 128) * 64 + (ord($sequence{5}) - 128);
         }
-        $result .= _transliteration_replace($ord, $unknown, $langcode);
+        $result .= _transliteration_replace($ord, $unknown, $source_langcode);
         $head = '';
       }
       elseif ($c < "\x80") {
@@ -189,19 +195,19 @@ function transliteration_process($string, $unknown = '?', $langcode = NULL) {
 }
 
 /**
- * Lookup and replace a character from the transliteration database.
+ * Load the transliteration database and replace a Unicode character.
  *
- * @param integer $ord
- *   A unicode ordinal character code.
- * @param string $unknown
- *   Replacement for unknown characters.
- * @param string $langcode
- *   Optional ISO 639 language code used to import language specific
- *   replacements. Defaults to the current display language.
- *
- * @return string
- *   Plain ASCII replacement character.
- * @see transliteration_get()
+ * @param $ord
+ *   A ordinal Unicode character code.
+ * @param $unknown
+ *   Replacement string for characters that do not have a suitable ASCII
+ *   equivalent.
+ * @param $langcode
+ *   Optional ISO 639 language code that denotes the language of the input.
+ *   Used to apply language-specific optimizations.  Defaults to the current
+ *   display language.
+ * @return
+ *   ASCII replacement character.
  */
 function _transliteration_replace($ord, $unknown = '?', $langcode = NULL) {
   if (!isset($langcode)) {
