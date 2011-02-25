@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('nzup', 'nzurx', 'nzur', 'nzyt', 'nzyx', 'nzy', 'nzyp', 'nzyrx', 'nzyr', 'sit', 'six', 'si', 'sip', 'siex', 'sie', 'siep',

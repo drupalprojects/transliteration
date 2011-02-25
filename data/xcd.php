@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('cyess', 'cyeng', 'cyej', 'cyec', 'cyek', 'cyet', 'cyep', 'cyeh', 'co', 'cog', 'cogg', 'cogs', 'con', 'conj', 'conh', 'cod',

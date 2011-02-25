@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('reoss', 'reong', 'reoj', 'reoc', 'reok', 'reot', 'reop', 'reoh', 're', 'reg', 'regg', 'regs', 'ren', 'renj', 'renh', 'red',

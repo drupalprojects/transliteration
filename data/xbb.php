@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('moen', 'moenj', 'moenh', 'moed', 'moel', 'moelg', 'moelm', 'moelb', 'moels', 'moelt', 'moelp', 'moelh', 'moem', 'moeb', 'moebs', 'moes',

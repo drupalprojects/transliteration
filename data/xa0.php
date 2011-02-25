@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('it', 'ix', 'i', 'ip', 'iet', 'iex', 'ie', 'iep', 'at', 'ax', 'a', 'ap', 'uox', 'uo', 'uop', 'ot',

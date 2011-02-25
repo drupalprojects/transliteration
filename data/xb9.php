@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('ruk', 'rut', 'rup', 'ruh', 'rweo', 'rweog', 'rweogg', 'rweogs', 'rweon', 'rweonj', 'rweonh', 'rweod', 'rweol', 'rweolg', 'rweolm', 'rweolb',

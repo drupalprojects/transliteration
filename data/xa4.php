@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('qiet', 'qiex', 'qie', 'qiep', 'quot', 'quox', 'quo', 'quop', 'qot', 'qox', 'qo', 'qop', 'qut', 'qux', 'qu', 'qup',
