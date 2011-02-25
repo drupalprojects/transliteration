@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('mya', 'myag', 'myagg', 'myags', 'myan', 'myanj', 'myanh', 'myad', 'myal', 'myalg', 'myalm', 'myalb', 'myals', 'myalt', 'myalp', 'myalh',

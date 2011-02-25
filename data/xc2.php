@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('syon', 'syonj', 'syonh', 'syod', 'syol', 'syolg', 'syolm', 'syolb', 'syols', 'syolt', 'syolp', 'syolh', 'syom', 'syob', 'syobs', 'syos',

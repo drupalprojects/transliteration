@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('Mie ', 'Xu ', 'Mang ', 'Chi ', 'Ge ', 'Xuan ', 'Yao ', 'Zi ', 'He ', 'Ji ', 'Diao ', 'Cun ', 'Tong ', 'Ming ', 'Hou ', 'Li ',

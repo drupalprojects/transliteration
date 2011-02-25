@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('apartment', 'alpha', 'ampere', 'are', 'inning', 'inch', 'won', 'escudo', 'acre', 'ounce', 'ohm', 'kai-ri', 'carat', 'calorie', 'gallon', 'gamma',

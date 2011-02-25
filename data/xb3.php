@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('dae', 'daeg', 'daegg', 'daegs', 'daen', 'daenj', 'daenh', 'daed', 'dael', 'daelg', 'daelm', 'daelb', 'daels', 'daelt', 'daelp', 'daelh',

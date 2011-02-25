@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('tim', 'tib', 'tibs', 'tis', 'tiss', 'ting', 'tij', 'tic', 'tik', 'tit', 'tip', 'tih', 'pa', 'pag', 'pagg', 'pags',

@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('jjyim', 'jjyib', 'jjyibs', 'jjyis', 'jjyiss', 'jjying', 'jjyij', 'jjyic', 'jjyik', 'jjyit', 'jjyip', 'jjyih', 'jji', 'jjig', 'jjigg', 'jjigs',

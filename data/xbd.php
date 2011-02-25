@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('bols', 'bolt', 'bolp', 'bolh', 'bom', 'bob', 'bobs', 'bos', 'boss', 'bong', 'boj', 'boc', 'bok', 'bot', 'bop', 'boh',

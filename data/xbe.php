@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('byum', 'byub', 'byubs', 'byus', 'byuss', 'byung', 'byuj', 'byuc', 'byuk', 'byut', 'byup', 'byuh', 'beu', 'beug', 'beugg', 'beugs',

@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('ggwem', 'ggweb', 'ggwebs', 'ggwes', 'ggwess', 'ggweng', 'ggwej', 'ggwec', 'ggwek', 'ggwet', 'ggwep', 'ggweh', 'ggwi', 'ggwig', 'ggwigg', 'ggwigs',

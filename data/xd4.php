@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('poss', 'pong', 'poj', 'poc', 'pok', 'pot', 'pop', 'poh', 'pwa', 'pwag', 'pwagg', 'pwags', 'pwan', 'pwanj', 'pwanh', 'pwad',

@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 return array(
   'en' => array('mil', 'milg', 'milm', 'milb', 'mils', 'milt', 'milp', 'milh', 'mim', 'mib', 'mibs', 'mis', 'miss', 'ming', 'mij', 'mic',
