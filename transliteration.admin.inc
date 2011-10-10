@@ -72,10 +72,17 @@ function transliteration_retroactive_submit($form, &$form_state) {
     $filename = transliteration_clean_filename(basename($file->filepath));
     // Build destination path.
     $destination = dirname($file->filepath) . '/' . $filename;
+    // Store original source path.
+    $source = $file->filepath;
 
     // Rename and update the file record accordingly.
     if (file_move($file->filepath, $destination, FILE_EXISTS_RENAME)) {
       db_query("UPDATE {files} SET filepath = '%s' WHERE fid = %d", $file->filepath, $file->fid);
+      // If possible, add a url redirect to handle old URL references.
+      if (module_exists('path_redirect')) {
+        $redirect = array('source' => $source, 'redirect' => $file->filepath);
+        path_redirect_save($redirect);
+      }
       $count++;
     }
     else {
