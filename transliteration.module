@@ -183,3 +183,46 @@ function transliteration_search_preprocess($text) {
   }
   return $text;
 }
+
+/**
+ * Implements hook_filter().
+ */
+function transliteration_filter($op, $delta = 0, $format = -1, $text = '', $cache_id = 0) {
+  switch ($op) {
+    case 'list':
+      return array(t('Convert all characters to US-ASCII'));
+    case 'no cache':
+      return FALSE;
+    case 'process':
+      return transliteration_get(
+        $text,
+        variable_get("transliteration_filter_no_known_transliteration_$format", '?')
+      );
+    case 'settings':
+      return array(
+        'filter_transliteration' => array(
+          '#type' => 'fieldset',
+          '#title' => 'Transliteration',
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+          "transliteration_filter_no_known_transliteration_$format" => array(
+            '#type' => 'textfield',
+            '#title' => t('Placeholder for characters with no known US-ASCII equivalent'),
+            '#size' => 2,
+            // The maximum length is 5 in order to accommodate unicode multibyte input.
+            '#maxlength' => 5,
+            '#default_value' => variable_get("transliteration_filter_no_known_transliteration_$format", '?'),
+          ),
+        ),
+      );
+    default:
+      return $text;
+  }
+}
+
+/**
+ * Implements hook_filter_tips().
+ */
+function transliteration_filter_tips($delta, $format, $long) {
+  return t('Non-latin text (e.g., å, ö, 漢) will be converted to US-ASCII equivalents (a, o, ?).');
+}

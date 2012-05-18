@@ -30,5 +30,9 @@ function transliteration_uninstall() {
   variable_del('transliteration_file_uploads');
   variable_del('transliteration_file_lowercase');
   variable_del('transliteration_search');
-}
 
+  // Delete all the transliteration_filter_no_known_transliteration_* variables
+  // and then clear the variable cache.
+  db_query("DELETE FROM {variable} WHERE name LIKE 'transliteration_filter_no_known_transliteration_%'");
+  cache_clear_all('variables', 'cache');
+}
