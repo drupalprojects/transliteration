@@ -127,6 +127,11 @@ function transliteration_file_query($count = FALSE) {
       $regex = '/[a-z0-9_.-]+$';
       break;
 
+    case 'mssql':
+      $operator = 'LIKE';
+      $regex = '%[^a-z0-9_.-]%';
+      break;
+
     default:
       return FALSE;
   }
