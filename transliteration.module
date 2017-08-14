@@ -98,16 +98,16 @@ function transliteration_form_search_admin_settings_alter(&$form, &$form_state) 
  * If multiple files have been submitted as an array, the names will be
  * processed recursively.
  *
- * @param $filename
+ * @param string $filename
  *   A file name, or an array of file names.
- * @param $source_langcode
+ * @param string $source_langcode
  *   Optional ISO 639 language code that denotes the language of the input and
  *   is used to apply language-specific variations. If the source language is
  *   not known at the time of transliteration, it is recommended to set this
  *   argument to the site default language to produce consistent results.
  *   Otherwise the current display language will be used.
  *
- * @return
+ * @return mixed
  *   Sanitized file name, or array of sanitized file names.
  *
  * @see language_default()
@@ -143,19 +143,19 @@ function transliteration_clean_filename($filename, $source_langcode = NULL) {
  * represent it in US-ASCII characters by conveying, in Roman letters, the
  * pronunciation expressed by the text in some other writing system.
  *
- * @param $text
+ * @param string $text
  *   UTF-8 encoded text input.
- * @param $unknown
+ * @param string $unknown
  *   Replacement string for characters that do not have a suitable ASCII
  *   equivalent.
- * @param $source_langcode
+ * @param string $source_langcode
  *   Optional ISO 639 language code that denotes the language of the input and
  *   is used to apply language-specific variations. If the source language is
  *   not known at the time of transliteration, it is recommended to set this
  *   argument to the site default language to produce consistent results.
  *   Otherwise the current display language will be used.
  *
- * @return
+ * @return string
  *   Transliterated text.
  *
  * @see language_default()
@@ -258,7 +258,8 @@ function _transliteration_filter_settings($form, &$form_state, $filter, $format,
       '#type' => 'textfield',
       '#title' => t('Placeholder for characters with no known US-ASCII equivalent'),
       '#size' => 2,
-      // The maximum length is 5 in order to accommodate unicode multibyte input.
+      // The maximum length is 5 in order to accommodate unicode multibyte
+      // input.
       '#maxlength' => 5,
       '#default_value' => $filter->settings['no_known_transliteration'],
     ),
