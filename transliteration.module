@@ -106,6 +106,7 @@ function transliteration_form_search_admin_settings_alter(&$form, &$form_state) 
  *   not known at the time of transliteration, it is recommended to set this
  *   argument to the site default language to produce consistent results.
  *   Otherwise the current display language will be used.
+ *
  * @return
  *   Sanitized file name, or array of sanitized file names.
  *
@@ -153,6 +154,7 @@ function transliteration_clean_filename($filename, $source_langcode = NULL) {
  *   not known at the time of transliteration, it is recommended to set this
  *   argument to the site default language to produce consistent results.
  *   Otherwise the current display language will be used.
+ *
  * @return
  *   Transliterated text.
  *
@@ -181,10 +183,12 @@ function transliteration_init() {
         $langcode = $_POST['language'];
       }
     }
-    foreach ($_FILES['files']['name'] as $field => $filename) {
-      // Keep a copy of the unaltered file name.
-      $_FILES['files']['orig_name'][$field] = $filename;
-      $_FILES['files']['name'][$field] = transliteration_clean_filename($filename, $langcode);
+    if (is_array($_FILES['files']['name'])) {
+      foreach ($_FILES['files']['name'] as $field => $filename) {
+        // Keep a copy of the unaltered file name.
+        $_FILES['files']['orig_name'][$field] = $filename;
+        $_FILES['files']['name'][$field] = transliteration_clean_filename($filename, $langcode);
+      }
     }
   }
 }
@@ -229,7 +233,7 @@ function transliteration_filter_info() {
       'process callback' => '_transliteration_filter_process',
       'settings callback' => '_transliteration_filter_settings',
       'default settings' => array(
-        'no_known_transliteration' => '?'
+        'no_known_transliteration' => '?',
       ),
       'tips callback' => '_transliteration_filter_tips',
     ),
@@ -257,7 +261,7 @@ function _transliteration_filter_settings($form, &$form_state, $filter, $format,
       // The maximum length is 5 in order to accommodate unicode multibyte input.
       '#maxlength' => 5,
       '#default_value' => $filter->settings['no_known_transliteration'],
-    )
+    ),
   );
 }
 
