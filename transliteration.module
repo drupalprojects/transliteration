@@ -267,6 +267,27 @@ function _transliteration_filter_settings($form, &$form_state, $filter, $format,
 }
 
 /**
+ * Implements hook_help().
+ */
+function transliteration_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#transliteration':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides a central transliteration service to other Drupal modules, and sanitizes file names while uploading.') . '</p>';
+      $output .= '<p>' . t('Provides one-way string transliteration (romanization) and cleans file names during upload by replacing unwanted characters..') . '</p>';
+      $output .= '<p>' . t('Generally spoken, it takes Unicode text and tries to represent it in US-ASCII characters (universally displayable, unaccented characters) by attempting to transliterate the pronunciation expressed by the text in some other writing system to Roman letters..') . '</p>';
+      $output .= '<p>' . t('According to Unidecode, from which most of the transliteration data has been derived, "Russian and Greek seem to work passably. But it works quite bad on Japanese and Thai.".') . '</p>';
+      $output .= '<h3>' . t('Usage') . '</h3>';
+      $output .= '<p>' . t("If you are installing to an existing Drupal site, you might want to fix existing file names after installation, which will update all file names containing non-ASCII characters. However, if you have manually entered links to those files in any contents, these links will break since the original files are renamed. Therefore it is a good idea to test the conversion first on a copy of your web site. You'll find the retroactive conversion at Configuration and modules >> Media >> File system >> Transliteration.") . '</p>';
+      $output .= '<p>' . t("This project doesn't require special permissions.") . '</p>';
+      $output .= '<p>' . t('This project can be configured from the File system configuration page (Configuration and modules » Media » File system » Settings).') . '</p>';
+      $output .= '<p>' . t('Transliterate file names during upload: If you need more control over the resulting file names you might want to disable this feature here and install the FileField Paths  (http://drupal.org/project/filefield_paths) instead.') . '</p>';
+      $output .= '<p>' . t('Lowercase transliterated file names: It is recommended to enable this option to prevent issues with case-insensitive file systems.') . '</p>';
+      return $output;
+  }
+}
+
+/**
  * Filter tips callback for the transliteration filter.
  */
 function _transliteration_filter_tips($filter, $format, $long) {
