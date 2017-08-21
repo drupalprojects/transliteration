@@ -8,10 +8,9 @@
 /**
  * Alters a file name before transliteration and sanitization.
  *
- * @param &$filename
+ * @param string &$filename
  *   The file name before being parsed by transliteration.
- *
- * @param $source_langcode
+ * @param string $source_langcode
  *   Optional ISO 639 language code that denotes the language of the input.
  *
  * @see transliteration_clean_filename()
