@@ -69,6 +69,30 @@ function transliteration_form_system_file_system_settings_alter(&$form, &$form_s
       ),
     ),
   );
+
+  $form['transliteration']['transliteration_file_underscore_replacement_option'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Underscore replacement in the file names.'),
+    '#default_value' => variable_get('transliteration_file_underscore_replacement_option', TRUE),
+    '#description' => t('This is used to enaled replacing underscore in all file names.'),
+  );
+
+  $form['transliteration']['transliteration_file_underscore_replacement'] = array(
+    '#type' => 'radios',
+    '#title' => t('Replace underscore with'),
+    '#default_value' => variable_get('transliteration_file_underscore_replacement', '_'),
+    '#description' => t('Select what character to use when replacing Underscore in file names. It has no effect if transliteration has been disabled.'),
+    '#options' => array(
+      '_' => t('Default (_)'),
+      '-' => t('Hyphen (-)'),
+    ),
+    '#states' => array(
+      'invisible' => array(
+        'input[name="transliteration_file_underscore_replacement_option"]' => array('checked' => FALSE),
+      ),
+    ),
+  );
+
   $form['buttons']['#weight'] = 1;
 }
 
@@ -125,6 +149,13 @@ function transliteration_clean_filename($filename, $source_langcode = NULL) {
   $filename = transliteration_get($filename, '', $source_langcode);
   // Replace whitespace.
   $filename = str_replace(' ', '_', $filename);
+
+  // Enable underscore options.
+  if (variable_get('transliteration_file_underscore_replacement_option', TRUE)) {
+    // Replace underscore.
+    $filename = str_replace('_', variable_get('transliteration_file_underscore_replacement', '_'), $filename);
+  }
+
   // Remove remaining unsafe characters.
   $filename = preg_replace('![^0-9A-Za-z_.-]!', '', $filename);
   // Remove multiple consecutive non-alphabetical characters.
